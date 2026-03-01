@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Testing / coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+
+# Virtual environments
+.venv
+venv/
+env/
+# For Pipenv, it is recommended to include Pipfile.lock in version control.
+# Virtualenv
+.env
+
+# IDE-specific files
+.idea/
+.vscode/
+*.swp # vim temporary files
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Secrets (add specific file names if needed)
+secret.key
+# For sensitive information like API keys, use environment variables and ensure the file storing them (e.g., .env) is ignored.
