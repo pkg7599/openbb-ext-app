@@ -39,7 +39,7 @@ class FilePreviewerRoute:
                 "file_previewer_using_fileid": {
                     "name": "Document Viewer with fileid",
                     "description": "Display a PDF file with base64 encoding",
-                    "endpoint": "/widgets/file_previewer",
+                    "endpoint": "",
                     "gridData": {"w": 20, "h": 20},
                     "type": "pdf",
                     "params": [
