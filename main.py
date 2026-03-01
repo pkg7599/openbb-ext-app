@@ -8,6 +8,7 @@ from src.agents.audit_agent.route import AuditAgentRoute
 
 # from src.middlewares.auth_middleware import AuthMiddleware
 from src.widgets.file_previewer.route import FilePreviewerRoute
+from src.widgets.tabular_widget.route import TableRoute
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -43,5 +44,7 @@ async def root():
 
 app.include_router(FilePreviewerRoute.router)
 app.include_router(AuditAgentRoute.router)
+app.include_router(TableRoute.router)
+
 
 logger.info(f"OpenBB External App is running!!")

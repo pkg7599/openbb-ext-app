@@ -10,3 +10,4 @@ langchain-openai==1.1.10
 elasticsearch[async]==9.3.0
 elasticsearch-dsl
 openai==2.24.0
+google-cloud-bigquery==3.40.1
