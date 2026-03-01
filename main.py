@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
 from src.agents.audit_agent.route import AuditAgentRoute
-from src.middlewares.auth_middleware import AuthMiddleware
+
+# from src.middlewares.auth_middleware import AuthMiddleware
 from src.widgets.file_previewer.route import FilePreviewerRoute
 
 logger = logging.getLogger(__name__)
@@ -20,7 +21,7 @@ app = FastAPI(
 
 app.add_middleware(GZipMiddleware)
 
-app.add_middleware(AuthMiddleware)
+# app.add_middleware(AuthMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
