@@ -17,31 +17,47 @@ EMBED_INPUT_TYPE = TypeVar("EMBED_INPUT_TYPE", bound=str | list[str])
 
 
 class CustomAzureOpenAI:
-    ENDPOINT = az_openai_settings.endpoint
-    API_KEY = az_openai_settings.api_key
-    API_VERSION = az_openai_settings.api_version
+    EMBED_ENDPOINT = az_openai_settings.embed_endpoint
+    EMBED_API_KEY = az_openai_settings.embed_api_key
+    EMBED_API_VERSION = az_openai_settings.embed_api_version
     EMBED_MODEL = az_openai_settings.embed_model_name
+    CHAT_ENDPOINT = az_openai_settings.chat_endpoint
+    CHAT_API_KEY = az_openai_settings.chat_api_key
+    CHAT_API_VERSION = az_openai_settings.chat_api_version
     CHAT_MODEL = az_openai_settings.chat_model_name
 
-    _az_client = None
+    _az_embed_client = None
+    _az_chat_client = None
 
     @classmethod
-    def client(cls):
+    def embed_client(cls):
 
-        if cls._az_client is None:
-            cls._az_client = AsyncAzureOpenAI(
-                api_key=cls.API_KEY,
-                api_version=cls.API_VERSION,
-                azure_endpoint=cls.ENDPOINT,
+        if cls._az_embed_client is None:
+            cls._az_embed_client = AsyncAzureOpenAI(
+                api_key=cls.EMBED_API_KEY,
+                api_version=cls.EMBED_API_VERSION,
+                azure_endpoint=cls.EMBED_ENDPOINT,
             )
         logger.info("New instance of Azure OpenAI client created")
-        return cls._az_client
+        return cls._az_embed_client
+
+    @classmethod
+    def chat_client(cls):
+
+        if cls._az_chat_client is None:
+            cls._az_chat_client = AsyncAzureOpenAI(
+                api_key=cls.CHAT_API_KEY,
+                api_version=cls.CHAT_API_VERSION,
+                azure_endpoint=cls.CHAT_ENDPOINT,
+            )
+        logger.info("New instance of Azure OpenAI client created")
+        return cls._az_chat_client
 
     @classmethod
     async def embed(cls, inp: EMBED_INPUT_TYPE) -> list[list[float]]:
         try:
             logger.debug(f"Generating embeddings for input: {inp}")
-            response = await cls.client().embeddings.create(
+            response = await cls.embed_client().embeddings.create(
                 input=inp,
                 model=cls.EMBED_MODEL,
             )
@@ -62,7 +78,7 @@ class CustomAzureOpenAI:
     ) -> ChatCompletion | AsyncStream[ChatCompletionChunk]:
         try:
             logger.debug(f"Generating chat completions for messages: {messages}")
-            return await cls.client().chat.completions.create(
+            return await cls.chat_client().chat.completions.create(
                 model=cls.CHAT_MODEL,
                 messages=messages,
                 stream=stream,

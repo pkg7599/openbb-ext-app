@@ -49,12 +49,12 @@ class AuditAgentService:
         primary_widgets = query_request.widgets.primary
         logger.info(f"Primary widgets: {primary_widgets}")
         for widget in primary_widgets:
-            if widget.name == "Audit Copilot":
+            if widget.name == "Document Viewer with fileid":
                 file_id = None
                 for param in widget.params:
                     if param.name == "file_id":
-                        file_id = param.value
-                        logger.info(f"file_id: {param.value}")
+                        file_id = param.current_value
+                        logger.info(f"file_id: {file_id}")
                         break
                 if file_id:
                     similar_docs = await SemanticService.search(
@@ -62,7 +62,7 @@ class AuditAgentService:
                         source_filter={"source_id": file_id},
                     )
                     context = "\n\n".join(
-                        doc.get("document", {}).get("_source", {}).get("content", "")
+                        doc.get("document", {}).get("content", "")
                         for doc in similar_docs
                     )
         user_prompt = AUDIT_AGENT_USER_PROMPT.format(

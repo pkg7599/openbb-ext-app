@@ -15,7 +15,7 @@ def retrieve_past_conversation(
     messages: list[LlmClientFunctionCallResultMessage | LlmClientMessage], k: int = 5
 ) -> list[ChatCompletionMessageParam]:
     openai_messages = []
-    for ind, message in list(reversed(messages)):
+    for ind, message in enumerate(list(reversed(messages))):
         if ind >= k:
             return list(reversed(openai_messages))
         openai_message = None

@@ -34,11 +34,14 @@ class ES(BaseSettings):
 
 
 class AzureOpenAI(BaseSettings):
-    api_key: str
-    endpoint: str
+    embed_api_key: str
+    embed_endpoint: str
+    chat_endpoint: str
     chat_model_name: str
     embed_model_name: str
-    api_version: str
+    embed_api_version: str
+    chat_api_version: str
+    chat_api_key: str
 
     model_config = SettingsConfigDict(
         env_file=get_project_root() / Path(".env"),
