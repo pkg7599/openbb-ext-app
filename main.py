@@ -18,18 +18,20 @@ app = FastAPI(
     docs_url="/docs",
 )
 
+app.add_middleware(GZipMiddleware)
+
+app.add_middleware(AuthMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # List of origins that can make requests
+    allow_origins=[
+        "https://pro.openbb.co",
+        "*",
+    ],  # List of origins that can make requests
     allow_credentials=True,  # Allow cookies/authorization headers to be sent
     allow_methods=["*"],  # Allow all HTTP methods (GET, POST, PUT, etc.)
     allow_headers=["*"],  # Allow all headers
 )
-
-app.add_middleware(GZipMiddleware)
-
-app.add_middleware(AuthMiddleware)
 
 
 @app.get("/")
