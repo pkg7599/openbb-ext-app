@@ -14,7 +14,7 @@ class FilePreviewerRoute:
     router = APIRouter(prefix="/widgets/file_previewer", tags=["WIDGETS"])
 
     @staticmethod
-    @router.post("", response_model=None)
+    @router.get("", response_model=None)
     async def file_preview_route(file_id: str) -> Response:
 
         try:
