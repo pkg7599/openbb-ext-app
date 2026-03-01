@@ -42,6 +42,15 @@ class FilePreviewerRoute:
                     "endpoint": "/widgets/file_previewer",
                     "gridData": {"w": 20, "h": 20},
                     "type": "pdf",
+                    "params": [
+                        {
+                            "paramName": "file_id",
+                            "label": "File Id",
+                            "description": "Enter file name",
+                            "type": "text",
+                            "value": "OhioTaxAudit",
+                        }
+                    ],
                 }
             }
         )
