@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
 from src.agents.audit_agent.route import AuditAgentRoute
+from src.widgets.chart_widget.route import ChartRoute
 
 # from src.middlewares.auth_middleware import AuthMiddleware
 from src.widgets.file_previewer.route import FilePreviewerRoute
@@ -45,6 +46,6 @@ async def root():
 app.include_router(FilePreviewerRoute.router)
 app.include_router(AuditAgentRoute.router)
 app.include_router(TableRoute.router)
-
+app.include_router(ChartRoute.router)
 
 logger.info(f"OpenBB External App is running!!")
