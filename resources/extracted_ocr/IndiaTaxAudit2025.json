@@ -1,0 +1,27 @@
+{
+  "notice_id": "ITD/AUD/2026/0301",
+  "jurisdiction": "India",
+  "notice_type": "Financial Records Requests",
+  "received_date": "2026-03-25",
+  "tax_period_start": "2024-04-01",
+  "tax_period_end": "2025-03-31",
+  "notice_summary": "Request for financial records including ledger extracts, tax reconciliation, and supporting documents.",
+  "requests": [
+    {
+      "request_id": "R-101",
+      "request_text": "Provide monthly general ledger details for expense accounts for the relevant tax period."
+    },
+    {
+      "request_id": "R-102",
+      "request_text": "Provide GST reconciliation summary along with variance explanation."
+    },
+    {
+      "request_id": "R-103",
+      "request_text": "Provide supporting vendor contract documents for selected transactions."
+    },
+    {
+      "request_id": "R-104",
+      "request_text": "Provide fixed asset depreciation schedule for the relevant tax period."
+    }
+  ]
+}

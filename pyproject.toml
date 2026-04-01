@@ -7,6 +7,7 @@ dependencies = [
     "black>=26.1.0",
     "elasticsearch>=9.3.0",
     "elasticsearch-dsl==0.0.9",
+    "google-genai>=1.70.0",
     "langchain-openai==1.1.10",
     "openai>=2.24.0",
 ]

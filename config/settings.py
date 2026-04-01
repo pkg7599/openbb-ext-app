@@ -78,7 +78,21 @@ class GoogleCloud(BaseSettings):
         return service_account.Credentials.from_service_account_info(self.gcp_key)
 
 
+class GoogleAI(BaseSettings):
+    api_key: str
+    model_name: str
+
+    model_config = SettingsConfigDict(
+        env_file=get_project_root() / Path(".env"),
+        env_file_encoding="utf-8",
+        extra="ignore",
+        env_prefix="GOOGLE_AI_",
+        env_ignore_empty=True,
+    )
+
+
 pdf_docs_settings = PDFDocuments()
 es_settings = ES()
 az_openai_settings = AzureOpenAI()
 gcloud_settings = GoogleCloud()
+google_ai_settings = GoogleAI()

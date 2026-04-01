@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 
 from src.agents.audit_agent.route import AuditAgentRoute
+from src.agents.audit_agent_v2.route import AuditAgentRoute as AuditAgentRouteV2
 from src.widgets.chart_widget.route import ChartRoute
 
 # from src.middlewares.auth_middleware import AuthMiddleware
@@ -45,6 +46,7 @@ async def root():
 
 app.include_router(FilePreviewerRoute.router)
 app.include_router(AuditAgentRoute.router)
+app.include_router(AuditAgentRouteV2.router)
 app.include_router(TableRoute.router)
 app.include_router(ChartRoute.router)
 
