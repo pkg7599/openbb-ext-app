@@ -41,6 +41,8 @@ Do NOT include PII
 Use ONLY dataset
 Return ALL requests
 Do NOT explain reasoning
+Provide data as markdown
+
 INTERNAL DATASET (CSV)
 audit_notices.csv 
 notice_id,jurisdiction,notice_type,received_date,tax_period_start,tax_period_end,notice_summary 
@@ -128,7 +130,7 @@ employee_count,total_salary
 INPUT AUDIT NOTICE:
 {audit_notice_text}
 
-OUTPUT FORMAT:
+OUTPUT FORMAT: Markdown as below
 Request No: <auto generated number>
 Request: <text>
 Decision: <final_response | draft_email | no_information>
